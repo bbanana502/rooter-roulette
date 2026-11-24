@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>루터 굿즈 룰렛</title>
+  <link rel="stylesheet" href="style.css?v=13" />
+</head>
+<body>
+  <div class="glow"></div>
+
+  <header class="top">
+    <div class="logo"><img src="face.svg" alt="" /><span>Rooter</span></div>
+  </header>
+
+  <main class="stage">
+    <section class="copy">
+      <div class="badge">EVENT</div>
+      <h1>루터 깔고<br /><em>굿즈 룰렛</em><br />돌리자!</h1>
+      <p>회원가입 인증하면 <b>굿즈 룰렛 기회!</b><br />혹시 기회를 놓쳐도 <b>간식</b>을 드려요<br />간식이 나와도 <b class="hot">20% 확률로 한 번 더!</b></p>
+      <label class="field entries" for="entries">
+        <span class="field-label">룰렛 칸을 입력하세요 <small>이름*개수, 쉼표나 줄바꿈으로 구분</small></span>
+        <textarea id="entries" rows="3" spellcheck="false" placeholder="키링*27, 띠부씰*30, 간식*43"></textarea>
+      </label>
+      <div class="summary" id="summary"></div>
+      <div class="actions">
+        <button id="shuffle" class="btn-dark" type="button">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          섞기
+        </button>
+        <button id="resetAll" class="btn-dark" type="button">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg>
+          <span>초기화</span>
+        </button>
+        <button id="spin" class="spin" type="button">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5"/></svg>
+          룰렛 돌리기
+        </button>
+      </div>
+    </section>
+
+    <section class="wheel-wrap">
+      <svg class="pointer" id="pointer" viewBox="0 0 56 64" aria-hidden="true">
+        <path d="M28 62 L4 14 A26 26 0 1 1 52 14 Z" fill="#212530" stroke="#fff" stroke-width="4" stroke-linejoin="round" />
+        <circle cx="28" cy="22" r="8" fill="#F6482D" />
+      </svg>
+      <svg class="wheel" id="wheel" viewBox="-110 -110 220 220"></svg>
+      <svg class="lights" id="lights" viewBox="-110 -110 220 220" aria-hidden="true"></svg>
+      <div class="hub"><img src="face.svg" alt="" /></div>
+    </section>
+  </main>
+
+  <!-- 결과 -->
+  <div class="result" id="result" hidden>
+    <canvas id="confetti"></canvas>
+    <div class="card">
+      <img src="face.svg" alt="" class="result-face" />
+      <div class="result-title" id="resultTitle"></div>
+            <div class="result-sub" id="resultSub"></div>
+      <button class="close" id="closeResult">확인</button>
+    </div>
+  </div>
+
+  <!-- 설정 (S) -->
+  <aside class="settings" id="settings" hidden>
+    <h2>운영</h2>
+    <button id="preset" class="wide">우리 굿즈로 채우기 (키링 27 · 띠부씰 30)</button>
+    <div class="stats" id="stats"></div>
+    <div class="row">
+      <button id="resetStats">통계 초기화</button>
+      <button id="closeSettings" class="primary">닫기 (S)</button>
+    </div>
+    <p class="note">
+      칸 하나가 1개예요. 바늘이 멈춘 칸이 당첨이고, 당첨돼도 칸 개수는 그대로예요.
+      입력창을 고치면 판이 고르게 다시 섞이고, 섞기를 누르면 무작위로 섞여요. 입력 내용·순서·통계는 이 브라우저에 저장돼요.
+    </p>
+  </aside>
+
+  <script src="app.js?v=13"></script>
+</body>
+</html>
